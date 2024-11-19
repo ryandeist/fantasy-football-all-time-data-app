@@ -41,6 +41,36 @@ app.get('/', async (req, res) => {
   res.render('index.ejs');
 });
 
+// index route
+app.get('/coaches', async (req, res) => {
+  res.render('coaches/index.ejs');
+});
+
+// show route
+app.get('/coaches/:coachId', async (req, res) => {
+  res.render('coaches/show.ejs');
+});
+
+// create 
+app.post('/coaches', async (req, res) => {
+  res.render('coaches/index.ejs');
+});
+
+// delete
+app.delete('/coaches/:coachId', async (req, res) => {
+  res.render('coaches/show.ejs');
+});
+
+// edit
+app.get('/coaches/:coachId/edit', async (req, res) => {
+  res.render('coaches/show.ejs');
+});
+
+// update
+app.put('/coaches/:coachId', async (req, res) => {
+  res.render('coaches/show.ejs');
+});
+
 app.use('/auth', authController);
 
 // Protected Routes
