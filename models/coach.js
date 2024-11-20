@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 //create coach schema
 const coachSchema = new mongoose.Schema({
     name: String,
+    seasons: Number,
+    totalRegularSeasonGames: Number, 
     regularSeasonWins: Number,
     regularSeasonLosses: Number,
     regularSeasonWinningPercentage: Number,

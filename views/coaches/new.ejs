@@ -1,4 +1,50 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
-<h1>new Route</h1>
+<h1>Add a Coach</h1>
+<form action="/coaches" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+    </div>
+    <div>
+        <label for="seasons">Number of Seasons:</label>
+        <input type="number" name="seasons" id="seasons" />
+    </div>
+    <div>
+        <label for="totalRegularSeasonGames">Total Regular Season Games:</label>
+        <input type="number" name="totalRegularSeasonGames" id="totalRegularSeasonGames" />
+    </div>
+    <div>
+        <label for="regularSeasonWins">Total Regular Season Wins:</label>
+        <input type="number" name="regularSeasonWins" id="regularSeasonWins" />
+    </div>
+    <div>
+        <label for="playoffBerths">Total Playoff Berths:</label>
+        <input type="number" name="playoffBerths" id="playoffBerths" />
+    </div>
+    <div>
+        <label for="playoffByes">Total Playoff Byes:</label>
+        <input type="number" name="playoffByes" id="playoffByes" />
+    </div>
+    <div>
+        <label for="playoffGames">Total Playoff Games:</label>
+        <input type="number" name="playoffGames" id="playoffGames" />
+    </div>
+    <div>
+        <label for="playoffWins">Total Playoff Wins:</label>
+        <input type="number" name="playoffWins" id="playoffWins" />
+    </div>
+    <div>
+        <label for="superBowlAppearances">Total Super Bowl Appearances:</label>
+        <input type="number" name="superBowlAppearances" id="superBowlAppearances" />
+    </div>
+    <div>
+        <label for="superBowlWins">Total Super Bowl Wins</label>
+        <input type="number" name="superBowlWins" id="superBowlWins" />
+    </div>
+    
+    <button type="submit">
+        Add Coach
+    </button>
+</form>
 <%- include ('../partials/_footer.ejs') %>

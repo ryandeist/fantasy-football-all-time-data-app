@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const addUserToViews = require('./middleware/addUserToViews');
+const Coach = require('./models/coach');
 require('dotenv').config();
 require('./config/database');
 
@@ -43,8 +44,14 @@ app.get('/', async (req, res) => {
 
 // index route
 app.get('/coaches', async (req, res) => {
-  res.render('coaches/index.ejs');
+  const allCoaches = await Coach.find();
+  res.render('coaches/index.ejs', { coaches: allCoaches});
 });
+
+// new route
+app.get('/coaches/new', async (req, res) => {
+  res.render('coaches/new.ejs');
+})
 
 // show route
 app.get('/coaches/:coachId', async (req, res) => {
@@ -53,7 +60,7 @@ app.get('/coaches/:coachId', async (req, res) => {
 
 // create 
 app.post('/coaches', async (req, res) => {
-  res.render('coaches/index.ejs');
+  res.render('coaches/new.ejs');
 });
 
 // delete
