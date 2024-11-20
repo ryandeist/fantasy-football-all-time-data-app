@@ -1,6 +1,6 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
-<h1>coaches index</h1>
+<h1>All Time MDL Coaches</h1>
 <table>
     <tr>
         <th>Name</th>
@@ -18,16 +18,16 @@
     </tr>
     <tr>
         <% coaches.forEach(coach => { %>
-            <td><%= coach.name %></td>
+            <td><a href="/coaches/<%= coach._id %>"><%= coach.name %></a></td>
             <td><%= coach.seasons %></td>
             <td><%= coach.totalRegularSeasonGames %></td>
             <td><%= coach.regularSeasonWins %></td>
-            <td><%= coach.regularSeasonWins/coach.totalRegularSeasonGames%></td>
+            <td><%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %></td>
             <td><%= coach.playoffBerths %></td>
             <td><%= coach.playoffByes %></td>
             <td><%= coach.playoffGames %></td>
             <td><%= coach.playoffWins %></td>
-            <td><%= coach.playoffWins/coach.playoffGames %></td>
+            <td><%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %></td>
             <td><%= coach.superBowlAppearances %></td>
             <td><%= coach.superBowlWins %></td>
        <% }); %>

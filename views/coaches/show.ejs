@@ -1,4 +1,41 @@
 <%- include('../partials/_header.ejs') %>
-<%- include('../partials/_navbar.ejs') %>
-<h1>show route</h1>
-<%- include ('../partials/_footer.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+
+        <a href="/coaches">
+            <button>
+                Back to Coaches
+            </button>
+        </a>
+        <div id="nameplate">
+            <h1>
+                <%= coach.name %>
+            </h1>
+            <div>
+                Total Seasons: <%= coach.seasons %>
+                Regular Season Win Rate: <%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %>
+                Post Season Win Rate: <%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%'  %>
+                Super Bowl Rings: <%= coach.superBowlWins %>
+            </div>
+        </div>
+        <div>
+            <h3>Regular Season</h3>
+        </div>
+        <div>
+            <h3>Post Season</h3>
+        </div>
+        <div>
+            Coming Soon - Individual Seasons
+        </div>
+        <div id="buttons">
+            <a href="/coaches/<%= coach._id %>/edit">
+                <button>
+                    Edit <%= coach.name %>
+                </button>
+            </a>
+            <form action="/coaches/<%=coach._id%>?_method=DELETE" method="POST">
+                <button type="submit">
+                    Delete <%= coach.name %>
+                </button>
+            </form>
+        </div>
+        <%- include ('../partials/_footer.ejs') %>

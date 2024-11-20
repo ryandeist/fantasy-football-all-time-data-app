@@ -1,4 +1,55 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
-<h1>Edit Route</h1>
+<a href="/coaches">
+    <button>
+        Back to Coaches
+    </button>
+</a>
+<h1>Edit Coach <%= coach.name %></h1>
+<form action="/coaches/<%=coach._id%>?_method=PUT" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= coach.name %>" />
+    </div>
+    <div>
+        <label for="seasons">Number of Seasons:</label>
+        <input type="number" name="seasons" value="<%= coach.seasons %>" />
+    </div>
+    <div>
+        <label for="totalRegularSeasonGames">Total Regular Season Games:</label>
+        <input type="number" name="totalRegularSeasonGames" value="<%= coach.totalRegularSeasonGames %>" />
+    </div>
+    <div>
+        <label for="regularSeasonWins">Total Regular Season Wins:</label>
+        <input type="number" name="regularSeasonWins" value="<%= coach.regularSeasonWins %>" />
+    </div>
+    <div>
+        <label for="playoffBerths">Total Playoff Berths:</label>
+        <input type="number" name="playoffBerths" value="<%= coach.playoffBerths %>" />
+    </div>
+    <div>
+        <label for="playoffByes">Total Playoff Byes:</label>
+        <input type="number" name="playoffByes" value="<%= coach.playoffByes %>" />
+    </div>
+    <div>
+        <label for="playoffGames">Total Playoff Games:</label>
+        <input type="number" name="playoffGames" value="<%= coach.playoffGames %>" />
+    </div>
+    <div>
+        <label for="playoffWins">Total Playoff Wins:</label>
+        <input type="number" name="playoffWins" value="<%= coach.playoffWins %>" />
+    </div>
+    <div>
+        <label for="superBowlAppearances">Total Super Bowl Appearances:</label>
+        <input type="number" name="superBowlAppearances" value="<%= coach.superBowlAppearances %>" />
+    </div>
+    <div>
+        <label for="superBowlWins">Total Super Bowl Wins</label>
+        <input type="number" name="superBowlWins" value="<%= coach.superBowlWins %>" />
+    </div>
+    
+    <button type="submit">
+        Update Coach
+    </button>
+</form>
 <%- include ('../partials/_footer.ejs') %>

@@ -55,27 +55,34 @@ app.get('/coaches/new', async (req, res) => {
 
 // show route
 app.get('/coaches/:coachId', async (req, res) => {
-  res.render('coaches/show.ejs');
+  const viewedCoach = await Coach.findById(req.params.coachId);
+  res.render('coaches/show.ejs', { coach: viewedCoach });
 });
 
 // create 
 app.post('/coaches', async (req, res) => {
-  res.render('coaches/new.ejs');
+  await Coach.create(req.body);
+  res.redirect('/coaches');
 });
 
 // delete
 app.delete('/coaches/:coachId', async (req, res) => {
-  res.render('coaches/show.ejs');
+  await Coach.findByIdAndDelete(req.params.coachId);
+  res.redirect('/coaches');
 });
 
 // edit
 app.get('/coaches/:coachId/edit', async (req, res) => {
-  res.render('coaches/show.ejs');
+  const viewedCoach = await Coach.findById(req.params.coachId);
+  res.render('coaches/edit.ejs', {
+    coach: viewedCoach,
+  });
 });
 
 // update
 app.put('/coaches/:coachId', async (req, res) => {
-  res.render('coaches/show.ejs');
+  await Coach.findByIdAndUpdate(req.params.coachId, req.body);
+  res.redirect(`/coaches/${req.params.coachId}`);
 });
 
 app.use('/auth', authController);
