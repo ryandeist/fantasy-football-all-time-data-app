@@ -13,63 +13,245 @@
         </div>
         <div class="section">
             <div class="container">
-                <div class="tabs is-boxed is-small-mobile">
-                    <ul>
-                        <li class="is-active" data-target="player-card">
-                            <a>Player Card</a>
-                        </li>
-                        <li data-target="regular-season">
-                            <a>Regular Season</a>
-                        </li>
-                        <li data-target="post-season">
-                            <a>Post Season</a>
-                        </li>
-                        <li data-target="history">
-                            <a>History</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="px-2" id="tab-content">
-                    <div id="player-card">
-                        <div class="columns">
-                            <div class="column"></div>
-                            <div class="column"></div>
+                <div>
+                    <div class="card">
+                        <div class="card-content p-2">
+                            <div class="media">
+                                <div class="media-left" style="width: 20%;">
+                                    <figure class="image is-square">
+                                        <img class=""
+                                            src="../assets/452350580_10228272837820907_1759786816491032783_n.jpg"
+                                            alt="">
+                                    </figure>
+                                </div>
+                                <div class="media-content" style="width: 40%;">
+                                    <p class="title is-size-5-mobile is-size-2-desktop">
+                                        <%=coach.name%>
+                                    </p>
+                                    <p class="subtitle is-size-6-mobile is-size-3-desktop mb-1">Seasons Played: <%=coach.seasons%>
+                                    </p>
+                                    <p class="subtitle is-size-7-mobile is-size-4-desktop">🏆 x <%=coach.superBowlWins%>
+                                    </p>
+                                </div>
+                                <div>
+                                    <% if (user) { %>
+                                        <a href="/coaches/<%= coach._id %>/edit">
+                                            <button class="is-size-6-mobile">
+                                                Edit
+                                            </button>
+                                        </a>
+                                        <form action="/coaches/<%=coach._id%>?_method=DELETE" method="POST">
+                                            <button class="is-size-6-mobile" type="submit">
+                                                Delete
+                                            </button>
+                                        </form>
+                                        <% } else { %>
+                                            <% } %>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div id="regular-season" class="is-hidden">
-                        <p>
-                            2
-                        </p>
+                    <div class="tabs is-boxed is-small-mobile">
+                        <ul>
+                            <li class="is-active" data-target="player-card">
+                                <a>Player Card</a>
+                            </li>
+                            <li data-target="regular-season">
+                                <a>Regular Season</a>
+                            </li>
+                            <li data-target="post-season">
+                                <a>Post Season</a>
+                            </li>
+                            <li data-target="history">
+                                <a>History</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="post-season" class="is-hidden">
-                        <p>
-                            3
-                        </p>
-                    </div>
-                    <div id="history" class="is-hidden">
-                        <p>
-                            4
-                        </p>
+                    <div class="px-2" id="tab-content">
+                        <!-- player card tab -->
+                        <div class="fixed-grid" id="player-card">
+                            <div class="grid">
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Regular Season Record:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.regularSeasonWins%> - <%=coach.totalRegularSeasonGames -
+                                                        coach.regularSeasonWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Post Season Record:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffWins%> - <%=coach.playoffGames - coach.playoffWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5 mb-3">Playoff Berths:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffBerths%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Super Bowl Appearances:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.superBowlAppearances%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--regular season tab-->
+                        <div id="regular-season" class="fixed-grid is-hidden">
+                            <div class="grid">
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Total Games:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.totalRegularSeasonGames%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Win Percentage:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=((coach.regularSeasonWins
+                                                    /coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5 mb-3">Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.regularSeasonWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Losses:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.totalRegularSeasonGames - coach.regularSeasonWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--post season tab-->
+                        <div id="post-season" class="is-hidden fixed-grid">
+                            <div class="grid">
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Playoff Berths:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffBerths%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Byes Awarded:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffByes%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Total Playoff Games:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffGames%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Playoff Win Percentage:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=((coach.playoffWins /coach.playoffGames)*100).toFixed(2) + '%' %>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Playoff Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Playoff Losses:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.playoffGames - coach.playoffWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5 mb-3">Super Bowl Appearances:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.superBowlAppearances%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card p-1" style="height: 100%;">
+                                        <div class="content">
+                                            <h6 class="has-text-centered pt-5">Super Bowl Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5">
+                                                <%=coach.superBowlWins%>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--History Tab-->
+                        <div id="history" class="is-hidden">
+                            <p>
+                                Coming Soon!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        <!-- <% if (user) { %>
-        <div id="buttons">
-            <a href="/coaches/<%= coach._id %>/edit">
-                <button>
-                    Edit <%= coach.name %>
-                </button>
-            </a>
-            <form action="/coaches/<%=coach._id%>?_method=DELETE" method="POST">
-                <button type="submit">
-                    Delete <%= coach.name %>
-                </button>
-            </form>
-            <% } else { %>
-                Sign in to edit coach!
-            <% } %>
-        </div> -->
-        <%- include ('../partials/_footer.ejs') %>
+            <%- include ('../partials/_footer.ejs') %>

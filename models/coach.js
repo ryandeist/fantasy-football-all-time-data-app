@@ -6,17 +6,12 @@ const coachSchema = new mongoose.Schema({
     seasons: Number,
     totalRegularSeasonGames: Number, 
     regularSeasonWins: Number,
-    regularSeasonLosses: Number,
-    regularSeasonWinningPercentage: Number,
     playoffBerths: Number,
     playoffByes: Number, 
     playoffGames: Number,
     playoffWins: Number,
-    playoffLosses: Number,
-    playoffWinPercentage: Number,
     superBowlAppearances: Number,
     superBowlWins: Number,
-    topThreeFinishes: Number,
 });
 
 // create coach model

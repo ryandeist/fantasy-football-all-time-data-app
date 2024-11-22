@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
-  </head>
-  <body>
-    <h1>Sign in</h1>
-    <form action="/auth/sign-in" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <button type="submit">Sign in</button>
-    </form>
-  </body>
-</html>
+<%- include('../partials/_header.ejs') %>
+  <%- include('../partials/_navbar.ejs') %>
+    <div class="section has-text-centered">
+      <h1 class="title">Sign in</h1>
+      <form class="has-text-centered" style="width: 30%; margin: auto;" action="/auth/sign-in" method="POST">
+        <div class="field">
+          <label class="label" for="username">Username:</label>
+          <div class="control">
+            <input class="input" type="text" name="username" id="username" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label has-text-centered" for="password">Password:</label>
+          <div class="control">
+            <input class="input" type="password" name="password" id="password" />
+          </div>
+        </div>
+        <button class="button is-primary" type="submit">Sign in</button>
+      </form>
+    </div>
+    <%- include ('../partials/_footer.ejs') %>
