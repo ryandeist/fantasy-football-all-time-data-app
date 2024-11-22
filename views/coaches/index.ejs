@@ -1,42 +1,88 @@
 <%- include('../partials/_header.ejs') %>
-<%- include('../partials/_navbar.ejs') %>
-<h1 class="has-text-centered title">All Time MDL Coaches</h1>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Seasons</th>
-        <th>Total Games</th>
-        <th>Reg Wins</th>
-        <th>Reg Win %</th>
-        <th>Berths</th>
-        <th>Byes</th>
-        <th>PO Games</th>
-        <th>PO Wins</th>
-        <th>PO Win %</th>
-        <th>SB App</th>
-        <th>SB Wins</th>
-    </tr>
-    <tr>
-        <% coaches.forEach(coach => { %>
-            <td><a href="/coaches/<%= coach._id %>"><%= coach.name %></a></td>
-            <td><%= coach.seasons %></td>
-            <td><%= coach.totalRegularSeasonGames %></td>
-            <td><%= coach.regularSeasonWins %></td>
-            <td><%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %></td>
-            <td><%= coach.playoffBerths %></td>
-            <td><%= coach.playoffByes %></td>
-            <td><%= coach.playoffGames %></td>
-            <td><%= coach.playoffWins %></td>
-            <td><%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %></td>
-            <td><%= coach.superBowlAppearances %></td>
-            <td><%= coach.superBowlWins %></td>
-       <% }); %>
-    </tr>
-</table>
-<% if (user) { %>
-<button>
-    <a href="/coaches/new">Add a Coach</a>
-</button>
-<% } else {} %>
-    
-<%- include ('../partials/_footer.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="section pt-4 pb-0">
+            <nav class="breadcrumb has-arrow-separator">
+                <ul class="container">
+                    <li><a class="has-text-grey" href="/">Home</a></li>
+                    <li class="is-active"><a class="has-text-grey has-text-weight-bold" href="/coaches">All Coaches</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="section py-5">
+            <h1 class="has-text-centered has-text-weight-bold is-size-1-desktop is-size-4-mobile">All Time MDL Coaches</h1>
+        </div>
+        <div class="section pt-0">
+            <div class="table-container">
+                    <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Seasons</th>
+                            <th>Total Games</th>
+                            <th>Reg Wins</th>
+                            <th>Reg Win %</th>
+                            <th>Berths</th>
+                            <th>Byes</th>
+                            <th>PO Games</th>
+                            <th>PO Wins</th>
+                            <th>PO Win %</th>
+                            <th>SB App</th>
+                            <th>SB Wins</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <% coaches.forEach(coach=> { %>
+                                <td><a href="/coaches/<%= coach._id %>">
+                                        <%= coach.name %>
+                                    </a></td>
+                                <td>
+                                    <%= coach.seasons %>
+                                </td>
+                                <td>
+                                    <%= coach.totalRegularSeasonGames %>
+                                </td>
+                                <td>
+                                    <%= coach.regularSeasonWins %>
+                                </td>
+                                <td>
+                                    <%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%'
+                                        %>
+                                </td>
+                                <td>
+                                    <%= coach.playoffBerths %>
+                                </td>
+                                <td>
+                                    <%= coach.playoffByes %>
+                                </td>
+                                <td>
+                                    <%= coach.playoffGames %>
+                                </td>
+                                <td>
+                                    <%= coach.playoffWins %>
+                                </td>
+                                <td>
+                                    <%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %>
+                                </td>
+                                <td>
+                                    <%= coach.superBowlAppearances %>
+                                </td>
+                                <td>
+                                    <%= coach.superBowlWins %>
+                                </td>
+                                <% }); %>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+        </div>
+
+        <div class="section has-text-centered">
+        <% if (user) { %>
+            <button>
+                <a href="/coaches/new">Add a Coach</a>
+            </button>
+            <% } else {} %>
+        </div>
+                <%- include ('../partials/_footer.ejs') %>

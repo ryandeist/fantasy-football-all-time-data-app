@@ -1,10 +1,14 @@
 <%- include('../partials/_header.ejs') %>
 <%- include('../partials/_navbar.ejs') %>
-<a href="/coaches">
-    <button>
-        Back to Coaches
-    </button>
-</a>
+<div class="section pt-4 pb-0">
+    <nav class="breadcrumb has-arrow-separator">
+        <ul class="container">
+            <li><a class="has-text-grey" href="/">Home</a></li>
+            <li><a class="has-text-grey" href="/coaches">All Coaches</a></li>
+            <li class="is-active"><a class="has-text-grey has-text-weight-bold" href="/coaches/:coachId/edit">Edit <%=coach.name%></a></li>
+        </ul>
+    </nav>
+</div>
 <h1>Edit Coach <%= coach.name %></h1>
 <form action="/coaches/<%=coach._id%>?_method=PUT" method="POST">
     <div>

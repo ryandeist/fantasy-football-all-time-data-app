@@ -1,32 +1,62 @@
 <%- include('../partials/_header.ejs') %>
     <%- include('../partials/_navbar.ejs') %>
-
-        <a href="/coaches">
-            <button>
-                Back to Coaches
-            </button>
-        </a>
+        <div class="section pt-4 pb-0">
+            <nav class="breadcrumb has-arrow-separator">
+                <ul class="container">
+                    <li><a class="has-text-grey" href="/">Home</a></li>
+                    <li><a class="has-text-grey" href="/coaches">All Coaches</a></li>
+                    <li class="is-active"><a class="has-text-grey has-text-weight-bold">
+                            <%=coach.name%>
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
         <div class="section">
-            <h1 class="title ">
-                <%= coach.name %>
-            </h1>
-            <div>
-                Total Seasons: <%= coach.seasons %>
-                Regular Season Win Rate: <%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %>
-                Post Season Win Rate: <%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%'  %>
-                Super Bowl Rings: <%= coach.superBowlWins %>
+            <div class="container">
+                <div class="tabs is-boxed is-small-mobile">
+                    <ul>
+                        <li class="is-active" data-target="player-card">
+                            <a>Player Card</a>
+                        </li>
+                        <li data-target="regular-season">
+                            <a>Regular Season</a>
+                        </li>
+                        <li data-target="post-season">
+                            <a>Post Season</a>
+                        </li>
+                        <li data-target="history">
+                            <a>History</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-2" id="tab-content">
+                    <div id="player-card">
+                        <div class="columns">
+                            <div class="column"></div>
+                            <div class="column"></div>
+                        </div>
+                    </div>
+                    <div id="regular-season" class="is-hidden">
+                        <p>
+                            2
+                        </p>
+                    </div>
+                    <div id="post-season" class="is-hidden">
+                        <p>
+                            3
+                        </p>
+                    </div>
+                    <div id="history" class="is-hidden">
+                        <p>
+                            4
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="section">
-            <h3>Regular Season</h3>
-        </div>
-        <div class="section">
-            <h3>Post Season</h3>
-        </div>
-        <div>
-            Coming Soon - Individual Seasons
-        </div>
-        <% if (user) { %>
+
+
+        <!-- <% if (user) { %>
         <div id="buttons">
             <a href="/coaches/<%= coach._id %>/edit">
                 <button>
@@ -41,5 +71,5 @@
             <% } else { %>
                 Sign in to edit coach!
             <% } %>
-        </div>
+        </div> -->
         <%- include ('../partials/_footer.ejs') %>

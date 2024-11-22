@@ -1,12 +1,26 @@
-<nav>
-    <a href="/">Home</a>
+<nav class="navbar has-shadow is-white">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="../assets/football.png" alt="site logo" style="max-height: 70px" class="py-2 px-2">
+    </a>
+    <p class="navbar-item is-size-4 has-text-weight-bold">MDL Statracker</p>
+    <a class="navbar-burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>    
+  <div class="navbar-menu" id="nav-links">
+    <div class="navbar-end">
     <% if(user) { %>
-        Signed In: <%= user.username %>
-      <a href="../coaches">Add a Coach</a>
-      <a href="/auth/sign-out">Sign Out</a>
-    <% } else { %>
-        Guest
-      <a href="/auth/sign-in">Sign In</a>
-      <a href="/auth/sign-up">Sign Up</a>
-    <% } %>
-  </nav>
+      <p class="navbar-item"><%= user.username %></p>
+        <a href="../coaches" class="navbar-item">Coaches List</a>
+        <a href="/auth/sign-out" class="navbar-item">Sign Out</a>
+        <% } else { %>
+          <p class="navbar-item">Guest</p>
+          <a href="/auth/sign-in" class="navbar-item">Sign In</a>
+          <a href="/auth/sign-up" class="navbar-item">Sign Up</a>
+          <% } %>
+    </div>
+  </div>
+</nav>
