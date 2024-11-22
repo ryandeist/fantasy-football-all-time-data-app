@@ -1,13 +1,27 @@
 <%- include('../partials/_header.ejs') %>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-      <button class="button"type="submit">Sign up</button>
-    </form>
+  <%- include('../partials/_navbar.ejs') %>
+    <div class="section has-text-centered">
+      <h1 class="title">Create a Statracker account!</h1>
+      <form class="has-text-centered" style="width: 30%; margin: auto;" action="/auth/sign-up" method="POST">
+        <div class="field">
+          <label class="label" for="username">Username:</label>
+          <div class="control">
+            <input class="input" type="text" name="username" id="username" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="password">Password:</label>
+          <div class="control">
+            <input class="input" type="password" name="password" id="password" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="confirmPassword">Confirm Password:</label>
+          <div class="control">
+            <input class="input" type="password" name="confirmPassword" id="confirmPassword" />
+          </div>
+        </div>
+        <button class="button" type="submit">Sign up</button>
+      </form>
+    </div>
     <%- include ('../partials/_footer.ejs') %>
