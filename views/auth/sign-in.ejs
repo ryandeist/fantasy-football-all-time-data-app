@@ -2,17 +2,20 @@
   <%- include('../partials/_navbar.ejs') %>
     <div class="section has-text-centered">
       <h1 class="title">Sign in</h1>
-      <form class="has-text-centered" style="width: 30%; margin: auto;" action="/auth/sign-in" method="POST">
+      <% if (failedSignIn) { %>
+        <p class="messageError"><%= failedSignIn %></p>
+     <% } %>
+      <form class="has-text-centered column is-3-desktop is-5-tablet is-7-mobile" style="margin: auto;" action="/auth/sign-in" method="POST">
         <div class="field">
           <label class="label" for="username">Username:</label>
           <div class="control">
-            <input class="input" type="text" name="username" id="username" />
+            <input class="input" type="text" name="username" id="username" required/>
           </div>
         </div>
         <div class="field">
           <label class="label" for="password">Password:</label>
           <div class="control">
-            <input class="input" type="password" name="password" id="password" />
+            <input class="input" type="password" name="password" id="password" required/>
           </div>
         </div>
         <button class="button is-primary" type="submit">Sign in</button>

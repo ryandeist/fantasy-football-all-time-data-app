@@ -26,3 +26,16 @@ tabs.forEach((tab) => {
         });
     });
 });
+
+// add coach modal
+const addCoachButton = document.querySelector('#add-coach');
+const modalBg = document.querySelector('.modal-background');
+const modal = document.querySelector('.modal');
+
+addCoachButton.addEventListener('click', () => {
+    modal.classList.add('is-active');
+});
+
+modalBg.addEventListener('click', () => {
+    modal.classList.remove('is-active');
+});

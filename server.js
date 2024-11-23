@@ -11,12 +11,14 @@ require('./config/database');
 // Controllers
 const authController = require('./controllers/auth');
 const isSignedIn = require('./middleware/isSignedIn');
+const adminCheck= require('./middleware/adminCheck');
 
 const app = express();
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 const path = require('path');
+const user = require('./models/user');
 // MIDDLEWARE
 
 // Middleware to parse URL-encoded data from forms
@@ -48,12 +50,14 @@ app.get('/', async (req, res) => {
 
 // index route
 app.get('/coaches', async (req, res) => {
+
+  // res.send(req.session.user)
   const allCoaches = await Coach.find();
   res.render('coaches/index.ejs', { coaches: allCoaches});
 });
 
 // new route
-app.get('/coaches/new', async (req, res) => {
+app.get('/coaches/new', adminCheck, async (req, res) => {
   res.render('coaches/new.ejs');
 })
 
@@ -64,7 +68,7 @@ app.get('/coaches/:coachId', async (req, res) => {
 });
 
 // create 
-app.post('/coaches', async (req, res) => {
+app.post('/coaches', adminCheck, async (req, res) => {
   await Coach.create(req.body);
   res.redirect('/coaches');
 });
@@ -76,7 +80,7 @@ app.delete('/coaches/:coachId', async (req, res) => {
 });
 
 // edit
-app.get('/coaches/:coachId/edit', async (req, res) => {
+app.get('/coaches/:coachId/edit', adminCheck, async (req, res) => {
   const viewedCoach = await Coach.findById(req.params.coachId);
   res.render('coaches/edit.ejs', {
     coach: viewedCoach,
@@ -93,15 +97,6 @@ app.use('/auth', authController);
 
 // Protected Routes
 app.use(isSignedIn);
-
-app.get('/protected', async (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.sendStatus(404);
-    // res.send('Sorry, no guests allowed.');
-  }
-});
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

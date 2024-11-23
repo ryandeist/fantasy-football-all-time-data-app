@@ -10,12 +10,13 @@
             </nav>
         </div>
         <div class="section py-5">
-            <h1 class="has-text-centered has-text-weight-bold is-size-1-desktop is-size-4-mobile">All Time MDL Coaches</h1>
+            <h1 class="has-text-centered has-text-weight-bold is-size-1-desktop is-size-2-tablet is-size-4-mobile">All
+                Time MDL Coaches</h1>
         </div>
-        <div class="section pt-0">
-            <div class="table-container">
-                    <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
-                        <thead>
+        <div class="section pt-0 has-text-centered">
+            <div class="table-container column is-9-desktop is-8-tablet" style="margin: auto;">
+                <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
+                    <thead>
                         <tr>
                             <th>Name</th>
                             <th>Seasons</th>
@@ -74,15 +75,28 @@
                                 <% }); %>
                         </tr>
                     </tbody>
-                    </table>
-                </div>
+                </table>
+            </div>
         </div>
 
         <div class="section has-text-centered">
-        <% if (user) { %>
-            <button>
-                <a href="/coaches/new">Add a Coach</a>
-            </button>
-            <% } else {} %>
+            <% if (user.isAdmin) { %>
+                <button class="button" id="add-coach">
+                    <a>Add a Coach</a>
+                </button>
+                <% } %>
         </div>
-                <%- include ('../partials/_footer.ejs') %>
+
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content has-background-white py-5 px-5">
+                <h1 class="title has-text-centered">Add a Coach</h1>
+                <form action="/coaches" method="POST">
+                    <div class="field">
+                        <label for="name" class="label"></label>
+                        div.control
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include ('../partials/_footer.ejs') %>

@@ -20,7 +20,7 @@
                                 <div class="media-left" style="width: 20%;">
                                     <figure class="image is-square">
                                         <img class=""
-                                            src="../assets/452350580_10228272837820907_1759786816491032783_n.jpg"
+                                            src="../assets/blank-profile-picture-973460_1280.webp"
                                             alt="">
                                     </figure>
                                 </div>
@@ -34,7 +34,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <% if (user) { %>
+                                    <% if (user.isAdmin) { %>
                                         <a href="/coaches/<%= coach._id %>/edit">
                                             <button class="is-size-6-mobile">
                                                 Edit
@@ -45,7 +45,6 @@
                                                 Delete
                                             </button>
                                         </form>
-                                        <% } else { %>
                                             <% } %>
                                 </div>
                             </div>

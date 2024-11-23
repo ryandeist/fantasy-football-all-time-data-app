@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const coachSchema = new mongoose.Schema({
     name: String,
     seasons: Number,
+    isActive: Boolean,
     totalRegularSeasonGames: Number, 
     regularSeasonWins: Number,
     playoffBerths: Number,
