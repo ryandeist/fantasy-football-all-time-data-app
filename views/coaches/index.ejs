@@ -14,7 +14,8 @@
                 Time MDL Coaches</h1>
         </div>
         <div class="section pt-0 has-text-centered">
-            <div class="table-container column is-9-desktop is-8-tablet" style="margin: auto;">
+            <div class="container">
+            <div class="table-container" style="margin: auto;">
                 <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
                     <thead>
                         <tr>
@@ -33,8 +34,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% coaches.forEach(coach=> { %>
                         <tr>
-                            <% coaches.forEach(coach=> { %>
                                 <td><a href="/coaches/<%= coach._id %>">
                                         <%= coach.name %>
                                     </a></td>
@@ -72,30 +73,131 @@
                                 <td>
                                     <%= coach.superBowlWins %>
                                 </td>
-                                <% }); %>
                         </tr>
+                        <% }); %>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
 
         <div class="section has-text-centered">
             <% if (user.isAdmin) { %>
-                <button class="button" id="add-coach">
+                <button class="button is-dark" id="add-coach">
                     <a>Add a Coach</a>
                 </button>
                 <% } %>
         </div>
 
+        <!-- NEW COACH MODAL -->
         <div class="modal">
             <div class="modal-background"></div>
             <div class="modal-content has-background-white py-5 px-5">
                 <h1 class="title has-text-centered">Add a Coach</h1>
                 <form action="/coaches" method="POST">
-                    <div class="field">
-                        <label for="name" class="label"></label>
-                        div.control
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column auto">
+                            <div class="field">
+                                <label for="name" class="label">Coach Name:</label>
+                                <div class="control">
+                                    <input type="text" class="input" name="name" id="name" placeholder="Coach Name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <div class="field">
+                                <label for="seasons" class="label">Seasons:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="seasons" id="seasons" placeholder="Seasons" required>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="totalRegularSeasonGames" class="label">Regular Season Games:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="totalRegularSeasonGames" id="totalRegularSeasonGames" placeholder="Regular Season Games" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="regularSeasonWins" class="label">Regular Season Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="regularSeasonWins" id="regularSeasonWins" placeholder="Regular Season Wins" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffBerths" class="label">Total Playoff Berths:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffBerths" id="playoffBerths" placeholder="Total Playoff Berths" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffByes" class="label">Total Playoff Byes:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffByes" id="playoffByes" placeholder="Total Playoff Byes" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffGames" class="label">Total Playoff Games:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffGames" id="playoffGames" placeholder="Total Playoff Games" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffWins" class="label">Total Playoff Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffWins" id="playoffWins" placeholder="Total Playoff Wins" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="superBowlAppearances" class="label">Super Bowl Appearances:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="superBowlAppearances" id="superBowlAppearances" placeholder="Super Bowl Appearances" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="superBowlWins" class="label">Super Bowl Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="superBowlWins" id="playoffWins" placeholder="Super Bowl Wins" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="isActive" class="checkbox">
+                                <input type="checkbox">
+                                Active Coach
+                            </label>
+                        </div>
+                    </div>
+                    <div class="has-text-centered">
+                    <button class="button" type="submit">
+                        Add Coach
+                    </button>
+                </div>
                 </form>
             </div>
         </div>
