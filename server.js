@@ -69,6 +69,12 @@ app.get('/coaches/:coachId', async (req, res) => {
 
 // create 
 app.post('/coaches', adminCheck, async (req, res) => {
+  if (req.body.isActive === "on") {
+    req.body.isActive = true;
+  } else {
+    req.body.isActive = false;
+  }
+
   await Coach.create(req.body);
   res.redirect('/coaches');
 });
@@ -89,6 +95,12 @@ app.get('/coaches/:coachId/edit', adminCheck, async (req, res) => {
 
 // update
 app.put('/coaches/:coachId', async (req, res) => {
+  if (req.body.isActive === "on") {
+    req.body.isActive = true;
+  } else {
+    req.body.isActive = false;
+  }
+  
   await Coach.findByIdAndUpdate(req.params.coachId, req.body);
   res.redirect(`/coaches/${req.params.coachId}`);
 });

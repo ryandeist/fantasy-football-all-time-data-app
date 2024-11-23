@@ -28,11 +28,11 @@ tabs.forEach((tab) => {
 });
 
 // add coach modal
-const addCoachButton = document.querySelector('#add-coach');
+const editCoachButton = document.querySelector('#edit-coach');
 const modalBg = document.querySelector('.modal-background');
 const modal = document.querySelector('.modal');
 
-addCoachButton.addEventListener('click', () => {
+editCoachButton.addEventListener('click', () => {
     modal.classList.add('is-active');
 });
 

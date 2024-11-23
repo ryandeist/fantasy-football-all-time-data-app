@@ -1,59 +1,133 @@
 <%- include('../partials/_header.ejs') %>
-<%- include('../partials/_navbar.ejs') %>
-<div class="section pt-4 pb-0">
-    <nav class="breadcrumb has-arrow-separator">
-        <ul class="container">
-            <li><a class="has-text-grey" href="/">Home</a></li>
-            <li><a class="has-text-grey" href="/coaches">All Coaches</a></li>
-            <li class="is-active"><a class="has-text-grey has-text-weight-bold" href="/coaches/:coachId/edit">Edit <%=coach.name%></a></li>
-        </ul>
-    </nav>
-</div>
-<h1>Edit Coach <%= coach.name %></h1>
-<form action="/coaches/<%=coach._id%>?_method=PUT" method="POST">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="<%= coach.name %>" />
-    </div>
-    <div>
-        <label for="seasons">Number of Seasons:</label>
-        <input type="number" name="seasons" value="<%= coach.seasons %>" />
-    </div>
-    <div>
-        <label for="totalRegularSeasonGames">Total Regular Season Games:</label>
-        <input type="number" name="totalRegularSeasonGames" value="<%= coach.totalRegularSeasonGames %>" />
-    </div>
-    <div>
-        <label for="regularSeasonWins">Total Regular Season Wins:</label>
-        <input type="number" name="regularSeasonWins" value="<%= coach.regularSeasonWins %>" />
-    </div>
-    <div>
-        <label for="playoffBerths">Total Playoff Berths:</label>
-        <input type="number" name="playoffBerths" value="<%= coach.playoffBerths %>" />
-    </div>
-    <div>
-        <label for="playoffByes">Total Playoff Byes:</label>
-        <input type="number" name="playoffByes" value="<%= coach.playoffByes %>" />
-    </div>
-    <div>
-        <label for="playoffGames">Total Playoff Games:</label>
-        <input type="number" name="playoffGames" value="<%= coach.playoffGames %>" />
-    </div>
-    <div>
-        <label for="playoffWins">Total Playoff Wins:</label>
-        <input type="number" name="playoffWins" value="<%= coach.playoffWins %>" />
-    </div>
-    <div>
-        <label for="superBowlAppearances">Total Super Bowl Appearances:</label>
-        <input type="number" name="superBowlAppearances" value="<%= coach.superBowlAppearances %>" />
-    </div>
-    <div>
-        <label for="superBowlWins">Total Super Bowl Wins</label>
-        <input type="number" name="superBowlWins" value="<%= coach.superBowlWins %>" />
-    </div>
-    
-    <button type="submit">
-        Update Coach
-    </button>
-</form>
-<%- include ('../partials/_footer.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+        <div class="section pt-4 pb-0">
+            <nav class="breadcrumb has-arrow-separator">
+                <ul class="container">
+                    <li><a class="has-text-grey" href="/">Home</a></li>
+                    <li><a class="has-text-grey" href="/coaches">All Coaches</a></li>
+                    <li class="is-active"><a class="has-text-grey has-text-weight-bold"
+                            href="/coaches/:coachId/edit">Edit <%=coach.name%></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="section mx-6">
+            <div class="container">
+                <h1 class="title has-text-centered">Edit <%= coach.name %>
+                </h1>
+                <form action="/coaches/<%=coach._id%>?_method=PUT"" method=" POST">
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column auto">
+                            <div class="field">
+                                <label for="name" class="label">Coach Name:</label>
+                                <div class="control">
+                                    <input type="text" class="input" name="name" value="<%= coach.name %>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-one-quarter">
+                            <div class="field">
+                                <label for="seasons" class="label">Seasons:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="seasons" value="<%= coach.seasons %>"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="totalRegularSeasonGames" class="label">Regular Season Games:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="totalRegularSeasonGames"
+                                        value="<%= coach.totalRegularSeasonGames %>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="regularSeasonWins" class="label">Regular Season Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="regularSeasonWins"
+                                        value="<%= coach.regularSeasonWins %>" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffBerths" class="label">Total Playoff Berths:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffBerths"
+                                        value="<%= coach.playoffBerths %>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffByes" class="label">Total Playoff Byes:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffByes"
+                                        value="<%= coach.playoffByes %>" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffGames" class="label">Total Playoff Games:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffGames"
+                                        value="<%= coach.playoffGames %>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="playoffWins" class="label">Total Playoff Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="playoffWins"
+                                        value="<%= coach.playoffWins %>" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="superBowlAppearances" class="label">Super Bowl Appearances:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="superBowlAppearances"
+                                        value="<%= coach.superBowlAppearances %>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="field">
+                                <label for="superBowlWins" class="label">Super Bowl Wins:</label>
+                                <div class="control">
+                                    <input type="number" class="input" name="superBowlWins"
+                                        value="<%= coach.superBowlWins %>" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for="isActive" class="checkbox">
+                                <input type="checkbox" name="isActive" <% if (coach.isActive) { %>checked<% } %>/>
+                                    Active Coach
+                            </label>
+                        </div>
+                    </div>
+                    <div class="has-text-centered">
+                        <button class="button is-dark" type="submit">
+                            Update <%= coach.name %>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include ('../partials/_footer.ejs') %>
