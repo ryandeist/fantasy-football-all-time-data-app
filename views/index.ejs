@@ -1,11 +1,15 @@
 <!-- views/index.ejs -->
 
 <%- include('./partials/_header.ejs') %>
-<%- include('./partials/_navbar.ejs') %>
-<div class="section">
-<h1>MDL All-Time Stats</h1>
-</div>
-      <p><a href="/coaches">
-        <button>All Time Coach Stats</button>
-      </a></p>
-<%- include ('./partials/_footer.ejs') %>
+  <%- include('./partials/_navbar.ejs') %>
+
+    <div class="container has-text-centered">
+        <h1 class="pt-6 title">MDL Statracker App</h1>
+        <a href="/coaches">
+          <button class="button is-dark is-large has-text-centered">
+            See All-Time Coaching Stats
+          </button>
+        </a>
+    </div>
+
+    <%- include ('./partials/_footer.ejs') %>
