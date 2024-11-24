@@ -69,7 +69,11 @@
                                     <%= coach.playoffWins %>
                                 </td>
                                 <td>
-                                    <%= ((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %>
+                                    <% if (coach.playoffGames === 0) { %>
+                                        <%= `-` %>
+                                        <% } else { %>
+                                            <%=((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %>
+                                    <% } %>
                                 </td>
                                 <td>
                                     <%= coach.superBowlAppearances %>

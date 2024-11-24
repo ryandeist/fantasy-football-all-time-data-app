@@ -199,7 +199,11 @@
                                         <div class="content">
                                             <h6 class="has-text-centered pt-5 has-text-white">Playoff Win Percentage:</h6>
                                             <h2 class="has-text-centered m-0 pb-5 has-text-white">
-                                                <%=((coach.playoffWins /coach.playoffGames)*100).toFixed(2) + '%' %>
+                                                <% if (coach.playoffGames === 0) { %>
+                                                    <%= `-` %>
+                                                    <% } else { %>
+                                                        <%=((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %>
+                                                <% } %>
                                             </h2>
                                         </div>
                                     </div>
@@ -258,10 +262,10 @@
             <!-- EDIT Coach Modal -->
             <div class="modal">
                 <div class="modal-background"></div>
-                <div class="modal-content has-background-light py-5 px-5">
+                <div data-theme="light" class="modal-content has-background-light py-5 px-5">
                     <h1 class="title has-text-centered">Edit <%= coach.name %></h1>
-                    <form action="/coaches/<%=coach._id%>?_method=PUT"" method="POST">
-                        <div class="columns is-multiline is-mobile">
+                    <form action="/coaches/<%=coach._id%>?_method=PUT" method="POST">
+                        <div class="columns is-multiline">
                             <div class="column auto">
                                 <div class="field">
                                     <label for="name" class="label">Coach Name:</label>
