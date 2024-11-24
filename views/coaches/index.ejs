@@ -13,10 +13,10 @@
             <h1 class="has-text-centered has-text-weight-bold is-size-1-desktop is-size-2-tablet is-size-4-mobile">All
                 Time MDL Coaches</h1>
         </div>
-        <div class="section pt-0 has-text-centered">
+        <div class="section py-0 has-text-centered">
             <div class="container">
             <div class="table-container" style="margin: auto;">
-                <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
+                <table class="table is-dark is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
                     <thead>
                         <tr class="is-size-7-mobile">
                             <th>Name<span class="icon-arrow">&uparrow;</span></th>
@@ -35,8 +35,8 @@
                     </thead>
                     <tbody>
                         <% coaches.forEach(coach=> { %>
-                        <tr>
-                                <td><a class="has-text-white has-text-weight-bold" href="/coaches/<%= coach._id %>">
+                        <tr class=>
+                                <td><a class="has-text-weight-bold" href="/coaches/<%= coach._id %>">
                                         <% if (coach.isActive) { %>
                                             <%= coach.name %>✦
                                         <% } else { %>
@@ -85,7 +85,6 @@
             </div>
         </div>
     </div>
-
         <div class="section has-text-centered">
             <% if (user && user.isAdmin) { %>
                 <a href="/coaches/new">

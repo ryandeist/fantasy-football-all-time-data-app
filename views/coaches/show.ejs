@@ -26,7 +26,11 @@
                                 </div>
                                 <div class="media-content" style="width: 40%;">
                                     <p class="title is-size-5-mobile is-size-2-desktop has-text-white">
-                                        <%=coach.name%> ✦
+                                        <% if (coach.isActive) { %>
+                                            <%= coach.name %>✦
+                                        <% } else { %>
+                                            <%= coach.name %>    
+                                        <% } %>
                                     </p>
                                     <p class="subtitle is-size-6-mobile is-size-3-desktop mb-1 has-text-white">Seasons Played: <%=coach.seasons%>
                                     </p>
@@ -254,7 +258,7 @@
             <!-- EDIT Coach Modal -->
             <div class="modal">
                 <div class="modal-background"></div>
-                <div class="modal-content has-background-dark py-5 px-5">
+                <div class="modal-content has-background-light py-5 px-5">
                     <h1 class="title has-text-centered">Edit <%= coach.name %></h1>
                     <form action="/coaches/<%=coach._id%>?_method=PUT"" method="POST">
                         <div class="columns is-multiline is-mobile">
