@@ -14,7 +14,7 @@
         <div class="section">
             <div class="container">
                 <div>
-                    <div class="card">
+                    <div class="card has-background-dark">
                         <div class="card-content p-2">
                             <div class="media">
                                 <div class="media-left" style="width: 20%;">
@@ -25,23 +25,21 @@
                                     </figure>
                                 </div>
                                 <div class="media-content" style="width: 40%;">
-                                    <p class="title is-size-5-mobile is-size-2-desktop">
-                                        <%=coach.name%>
+                                    <p class="title is-size-5-mobile is-size-2-desktop has-text-white">
+                                        <%=coach.name%> ✦
                                     </p>
-                                    <p class="subtitle is-size-6-mobile is-size-3-desktop mb-1">Seasons Played: <%=coach.seasons%>
+                                    <p class="subtitle is-size-6-mobile is-size-3-desktop mb-1 has-text-white">Seasons Played: <%=coach.seasons%>
                                     </p>
-                                    <p class="subtitle is-size-7-mobile is-size-4-desktop">🏆 x <%=coach.superBowlWins%>
+                                    <p class="subtitle is-size-7-mobile is-size-4-desktop has-text-white">🏆 x <%=coach.superBowlWins%> 🥈 x <%= (coach.superBowlAppearances-coach.superBowlWins) %>
                                     </p>
                                 </div>
                                 <div>
                                     <% if (user.isAdmin) { %>
-                                        <!-- <a href="/coaches/<%= coach._id %>/edit"> -->
-                                            <button class="is-size-6-mobile" id="edit-coach">
+                                            <button class="is-size-6-mobile has-text-white p-2 has-text-weight-bold" id="edit-coach">
                                                 Edit
                                             </button>
-                                        <!-- </a> -->
                                         <form action="/coaches/<%=coach._id%>?_method=DELETE" method="POST">
-                                            <button class="is-size-6-mobile" type="submit">
+                                            <button class="is-size-6-mobile has-text-white p-2 has-text-weight-bold" type="submit">
                                                 Delete
                                             </button>
                                         </form>
@@ -71,10 +69,10 @@
                         <div class="fixed-grid" id="player-card">
                             <div class="grid">
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Regular Season Record:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Regular Season Record:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.regularSeasonWins%> - <%=coach.totalRegularSeasonGames -
                                                         coach.regularSeasonWins%>
                                             </h2>
@@ -82,30 +80,30 @@
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Post Season Record:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Post Season Record:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffWins%> - <%=coach.playoffGames - coach.playoffWins%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5 mb-3">Playoff Berths:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 mb-3 has-text-white">Playoff Berths:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffBerths%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Super Bowl Appearances:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Super Bowl Appearances:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.superBowlAppearances%>
                                             </h2>
                                         </div>
@@ -117,20 +115,20 @@
                         <div id="regular-season" class="fixed-grid is-hidden">
                             <div class="grid">
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Total Games:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Total Games:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.totalRegularSeasonGames%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Win Percentage:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Win Percentage:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=((coach.regularSeasonWins
                                                     /coach.totalRegularSeasonGames)*100).toFixed(2) + '%' %>
                                             </h2>
@@ -138,20 +136,20 @@
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5 mb-3">Wins:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 mb-3 has-text-white">Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.regularSeasonWins%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Losses:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Losses:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.totalRegularSeasonGames - coach.regularSeasonWins%>
                                             </h2>
                                         </div>
@@ -163,80 +161,80 @@
                         <div id="post-season" class="is-hidden fixed-grid">
                             <div class="grid">
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Playoff Berths:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Playoff Berths:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffBerths%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Byes Awarded:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Byes Awarded:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffByes%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Total Playoff Games:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Total Playoff Games:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffGames%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Playoff Win Percentage:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Playoff Win Percentage:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=((coach.playoffWins /coach.playoffGames)*100).toFixed(2) + '%' %>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Playoff Wins:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Playoff Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffWins%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Playoff Losses:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Playoff Losses:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.playoffGames - coach.playoffWins%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5 mb-3">Super Bowl Appearances:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 mb-3 has-text-white">Super Bowl Appearances:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.superBowlAppearances%>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cell">
-                                    <div class="card p-1" style="height: 100%;">
+                                    <div class="card p-1 has-background-dark" style="height: 100%;">
                                         <div class="content">
-                                            <h6 class="has-text-centered pt-5">Super Bowl Wins:</h6>
-                                            <h2 class="has-text-centered m-0 pb-5">
+                                            <h6 class="has-text-centered pt-5 has-text-white">Super Bowl Wins:</h6>
+                                            <h2 class="has-text-centered m-0 pb-5 has-text-white">
                                                 <%=coach.superBowlWins%>
                                             </h2>
                                         </div>

@@ -37,7 +37,11 @@
                         <% coaches.forEach(coach=> { %>
                         <tr>
                                 <td><a href="/coaches/<%= coach._id %>">
-                                        <%= coach.name %>
+                                        <% if (coach.isActive) { %>
+                                            <%= coach.name %>✦
+                                        <% } else { %>
+                                            <%= coach.name %>    
+                                        <% } %>
                                     </a></td>
                                 <td>
                                     <%= coach.seasons %>
@@ -76,6 +80,7 @@
                         </tr>
                         <% }); %>
                     </tbody>
+                    ✦ = Active Player
                 </table>
             </div>
         </div>
