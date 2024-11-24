@@ -50,7 +50,7 @@
                     </div>
                     <div class="tabs is-boxed is-small-mobile">
                         <ul>
-                            <li class="is-active" data-target="player-card">
+                            <li class="is-active has-text-white" data-target="player-card">
                                 <a>Player Card</a>
                             </li>
                             <li data-target="regular-season">
@@ -254,7 +254,7 @@
             <!-- EDIT Coach Modal -->
             <div class="modal">
                 <div class="modal-background"></div>
-                <div class="modal-content has-background-white py-5 px-5">
+                <div class="modal-content has-background-dark py-5 px-5">
                     <h1 class="title has-text-centered">Edit <%= coach.name %></h1>
                     <form action="/coaches/<%=coach._id%>?_method=PUT"" method="POST">
                         <div class="columns is-multiline is-mobile">

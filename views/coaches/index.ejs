@@ -18,25 +18,25 @@
             <div class="table-container" style="margin: auto;">
                 <table class="table is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Seasons</th>
-                            <th>Total Games</th>
-                            <th>Reg Wins</th>
-                            <th>Reg Win %</th>
-                            <th>Berths</th>
-                            <th>Byes</th>
-                            <th>PO Games</th>
-                            <th>PO Wins</th>
-                            <th>PO Win %</th>
-                            <th>SB App</th>
-                            <th>SB Wins</th>
+                        <tr class="is-size-7-mobile">
+                            <th>Name<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Seasons<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Total Games<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Reg Wins<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Reg Win %<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Berths<span class="icon-arrow">&uparrow;</span></th>
+                            <th>Byes<span class="icon-arrow">&uparrow;</span></th>
+                            <th>PO Games<span class="icon-arrow">&uparrow;</span></th>
+                            <th>PO Wins<span class="icon-arrow">&uparrow;</span></th>
+                            <th>PO Win %<span class="icon-arrow">&uparrow;</span></th>
+                            <th>SB App<span class="icon-arrow">&uparrow;</span></th>
+                            <th>SB Wins<span class="icon-arrow">&uparrow;</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <% coaches.forEach(coach=> { %>
                         <tr>
-                                <td><a href="/coaches/<%= coach._id %>">
+                                <td><a class="has-text-white has-text-weight-bold" href="/coaches/<%= coach._id %>">
                                         <% if (coach.isActive) { %>
                                             <%= coach.name %>✦
                                         <% } else { %>
