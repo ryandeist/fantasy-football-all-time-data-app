@@ -19,7 +19,7 @@ router.post('/sign-up', async (req, res) => {
   // Check if the user already exists
   const existingUser = await User.findOne({ username });
 
-  // if the user exists,then dont bother doing anything, just send a message to the browser
+  // user exists throw error
   if (existingUser) {
     const failedSignUp = 'Sign-Up Failed. Please Try Again.'
     return res.redirect(`/auth/sign-up?failedSignUp=${failedSignUp}`);
@@ -31,7 +31,6 @@ router.post('/sign-up', async (req, res) => {
   }
 
   // create the user in the database
-  // -b make the password secure
   const hashPassword = auth.encryptPassword(password);
   const payload = { username, password: hashPassword };
 
@@ -67,12 +66,12 @@ router.post('/sign-in', async (req, res) => {
 
   // compare the password they submitted with the password in the db
   const validPassword = auth.comparePassword(password, user.password);
-  // if the password is no good, then send an error
+  // if the password is wrong, then send an error
   if (!validPassword) {
     const failedSignIn = 'Sign-In Failed. Please Try Again.'
     return res.redirect(`/auth/sign-in?failedSignIn=${failedSignIn}`);
   }
-  // else sign them in
+  // else sign in
   // create a session cookie
   req.session.user = {
     username: user.username,

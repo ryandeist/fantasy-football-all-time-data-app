@@ -27,7 +27,7 @@ tabs.forEach((tab) => {
     });
 });
 
-// add coach modal
+// edit coach modal
 const editCoachButton = document.querySelector('#edit-coach');
 const modalBg = document.querySelector('.modal-background');
 const modal = document.querySelector('.modal');
