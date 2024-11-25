@@ -1,7 +1,6 @@
 # MDL Statraker App
-![Home Page Screenshot](public/assets/home-page.png)
-![Index Page Screenshot](public/assets/coaches-index.png)
-![Show Page Screenshot](public/assets/coaches-show.png)
+
+![Show Page Screenshot](public/assets/coach-show.png)
 
 This application is a MEN Stack application that tracks all time coach data for players in a fantasy leage that I have been running for 14+ years. Building this application allow me to showcase my understanding of RESTful routes and CRUD in a real-world setting. It presented unique challenges with authenication and session validation, data visualization and manipulation, and styling. 
 
