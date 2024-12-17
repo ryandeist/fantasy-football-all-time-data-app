@@ -7,10 +7,12 @@ const coachSchema = new mongoose.Schema({
     isActive: Boolean,
     totalRegularSeasonGames: Number, 
     regularSeasonWins: Number,
+    regularWinPercent: Number,
     playoffBerths: Number,
     playoffByes: Number, 
     playoffGames: Number,
     playoffWins: Number,
+    playoffWinPercent: Number,
     superBowlAppearances: Number,
     superBowlWins: Number,
 });

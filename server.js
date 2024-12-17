@@ -50,10 +50,13 @@ app.get('/', async (req, res) => {
 
 // index route
 app.get('/coaches', async (req, res) => {
+  const { sortField = 'seasons', sortOrder = 'desc'} = req.query
+  const order = sortOrder === 'asc' ? 1 : -1;
+
 
   // res.send(req.session.user)
-  const allCoaches = await Coach.find();
-  res.render('coaches/index.ejs', { coaches: allCoaches});
+  const allCoaches = await Coach.find().sort({ [sortField]: order });
+  res.render('coaches/index.ejs', { coaches: allCoaches, sortField, sortOrder });
 });
 
 // new route
@@ -74,6 +77,14 @@ app.post('/coaches', adminCheck, async (req, res) => {
   } else {
     req.body.isActive = false;
   }
+
+  req.body.regularWinPercent = ((req.body.regularSeasonWins/req.body.totalRegularSeasonGames)*100).toFixed(2);
+
+  if (req.body.playoffBerths === '0') {
+    req.body.playoffWinPercent = 0;
+  } else {
+  req.body.playoffWinPercent = ((req.body.playoffWins/req.body.playoffGames)*100).toFixed(2);
+  };
 
   await Coach.create(req.body);
   res.redirect('/coaches');
@@ -100,6 +111,14 @@ app.put('/coaches/:coachId', async (req, res) => {
   } else {
     req.body.isActive = false;
   }
+
+  req.body.regularWinPercent = ((req.body.regularSeasonWins/req.body.totalRegularSeasonGames)*100).toFixed(2);
+
+  if (req.body.playoffBerths === '0') {
+    req.body.playoffWinPercent = 0;
+  } else {
+  req.body.playoffWinPercent = ((req.body.playoffWins/req.body.playoffGames)*100).toFixed(2);
+  };
   
   await Coach.findByIdAndUpdate(req.params.coachId, req.body);
   res.redirect(`/coaches/${req.params.coachId}`);

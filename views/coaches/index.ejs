@@ -13,90 +13,160 @@
             <h1 class="has-text-centered has-text-weight-bold is-size-1-desktop is-size-2-tablet is-size-4-mobile">All
                 Time MDL Coaches</h1>
         </div>
+
         <div class="section py-0 has-text-centered">
             <div class="container">
-            <div class="table-container" style="margin: auto;">
-                <table class="table is-dark is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
-                    <thead>
-                        <tr class="is-size-7-mobile">
-                            <th>Name<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Seasons<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Total Games<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Reg Wins<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Reg Win %<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Berths<span class="icon-arrow">&uparrow;</span></th>
-                            <th>Byes<span class="icon-arrow">&uparrow;</span></th>
-                            <th>PO Games<span class="icon-arrow">&uparrow;</span></th>
-                            <th>PO Wins<span class="icon-arrow">&uparrow;</span></th>
-                            <th>PO Win %<span class="icon-arrow">&uparrow;</span></th>
-                            <th>SB App<span class="icon-arrow">&uparrow;</span></th>
-                            <th>SB Wins<span class="icon-arrow">&uparrow;</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% coaches.forEach(coach=> { %>
-                        <tr class=>
-                                <td><a class="has-text-weight-bold" href="/coaches/<%= coach._id %>">
-                                        <% if (coach.isActive) { %>
-                                            <%= coach.name %>✦
-                                        <% } else { %>
-                                            <%= coach.name %>    
-                                        <% } %>
-                                    </a></td>
-                                <td>
-                                    <%= coach.seasons %>
-                                </td>
-                                <td>
-                                    <%= coach.totalRegularSeasonGames %>
-                                </td>
-                                <td>
-                                    <%= coach.regularSeasonWins %>
-                                </td>
-                                <td>
-                                    <%= ((coach.regularSeasonWins/coach.totalRegularSeasonGames)*100).toFixed(2) + '%'
-                                        %>
-                                </td>
-                                <td>
-                                    <%= coach.playoffBerths %>
-                                </td>
-                                <td>
-                                    <%= coach.playoffByes %>
-                                </td>
-                                <td>
-                                    <%= coach.playoffGames %>
-                                </td>
-                                <td>
-                                    <%= coach.playoffWins %>
-                                </td>
-                                <td>
-                                    <% if (coach.playoffGames === 0) { %>
-                                        <%= `-` %>
-                                        <% } else { %>
-                                            <%=((coach.playoffWins/coach.playoffGames)*100).toFixed(2) + '%' %>
-                                    <% } %>
-                                </td>
-                                <td>
-                                    <%= coach.superBowlAppearances %>
-                                </td>
-                                <td>
-                                    <%= coach.superBowlWins %>
-                                </td>
-                        </tr>
-                        <% }); %>
-                    </tbody>
-                    ✦ = Active Player
-                </table>
+                <div class="table-container" style="margin: auto;">
+                    <table id="coach-table"
+                        class="table is-dark is-fullwidth is-bordered is-striped is-narrow is-hoverable is-scrollable">
+                        <thead>
+                            <tr class="is-size-7-mobile">
+                                <th>
+                                    <a
+                                        href="?sortField=name&sortOrder=<%= sortField === 'name' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Name <%= sortField==='name' ? (sortOrder==='asc' ? '⬆️' : '⬇️' ) : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=seasons&sortOrder=<%= sortField === 'seasons' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Seasons <%= sortField==='seasons' ? (sortOrder==='asc' ? '⬆️' : '⬇️' ) : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=totalRegularSeasonGames&sortOrder=<%= sortField === 'totalRegularSeasonGames' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Total Games <%= sortField==='totalRegularSeasonGames' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=regularSeasonWins&sortOrder=<%= sortField === 'regularSeasonWins' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Reg Wins <%= sortField==='regularSeasonWins' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=regularWinPercent&sortOrder=<%= sortField === 'regularWinPercent' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Reg Wins % <%= sortField==='regularWinPercent' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=playoffBerths&sortOrder=<%= sortField === 'playoffBerths' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Berths <%= sortField==='playoffBerths' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=playoffByes&sortOrder=<%= sortField === 'playoffByes' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        Byes <%= sortField==='playoffByes' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=playoffGames&sortOrder=<%= sortField === 'playoffGames' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        PO Games <%= sortField==='playoffGames' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=playoffWins&sortOrder=<%= sortField === 'playoffWins' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        PO Wins <%= sortField==='playoffWins' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=playoffWinPercent&sortOrder=<%= sortField === 'playoffWinPercent' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        PO Win % <%= sortField==='playoffWinPercent' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=superBowlAppearances&sortOrder=<%= sortField === 'superBowlAppearances' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        SB Apps <%= sortField==='superBowlAppearances' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a
+                                        href="?sortField=superBowlWins&sortOrder=<%= sortField === 'superBowlWins' && sortOrder === 'desc' ? 'asc' : 'desc' %>">
+                                        SB Wins <%= sortField==='superBowlWins' ? (sortOrder==='asc' ? '⬆️' : '⬇️' )
+                                            : '' %>
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <% coaches.forEach(coach=> { %>
+                                <tr class='item'>
+                                    <td><a class="has-text-weight-bold" href="/coaches/<%= coach._id %>">
+                                            <% if (coach.isActive) { %>
+                                                <%= coach.name %> ✦
+                                                    <% } else { %>
+                                                        <%= coach.name %>
+                                                            <% } %>
+                                        </a></td>
+                                    <td>
+                                        <%= coach.seasons %>
+                                    </td>
+                                    <td>
+                                        <%= coach.totalRegularSeasonGames %>
+                                    </td>
+                                    <td>
+                                        <%= coach.regularSeasonWins %>
+                                    </td>
+                                    <td>
+                                        <%= coach.regularWinPercent + '%' %>
+                                    </td>
+                                    <td>
+                                        <%= coach.playoffBerths %>
+                                    </td>
+                                    <td>
+                                        <%= coach.playoffByes %>
+                                    </td>
+                                    <td>
+                                        <%= coach.playoffGames %>
+                                    </td>
+                                    <td>
+                                        <%= coach.playoffWins %>
+                                    </td>
+                                    <td>
+                                        <% if (coach.playoffGames===0) { %>
+                                            <%= `-` %>
+                                                <% } else { %>
+                                                    <%= coach.playoffWinPercent+ '%' %>
+                                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <%= coach.superBowlAppearances %>
+                                    </td>
+                                    <td>
+                                        <%= coach.superBowlWins %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                        ✦ = Active Player
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
         <div class="section has-text-centered">
             <% if (user && user.isAdmin) { %>
                 <a href="/coaches/new">
-                <button class="button is-dark" id="add-coach">
-                    Add a Coach
-                </button>
-            </a>
+                    <button class="button is-dark" id="add-coach">
+                        Add a Coach
+                    </button>
+                </a>
                 <% } %>
         </div>
-               
         <%- include ('../partials/_footer.ejs') %>
